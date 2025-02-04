@@ -141,7 +141,7 @@ a:focus {
   text-align: center;
 }
 
-.custom_nav-container .navbar-nav .nav-item:hover .nav-link, .custom_nav-container .navbar-nav .nav-item.active .nav-link {
+.custom_nav-container .navbar-nav .nav-item:hover .nav-link{
   color: #0355cc;
 }
 
@@ -495,8 +495,8 @@ a:focus {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      /* -ms-flex-direction: column;
+          flex-direction: column; */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -553,6 +553,7 @@ a:focus {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 45px;
+  margin-bottom:45px;
 }
 
 .service_section .btn-box a {
@@ -776,6 +777,9 @@ a:focus {
 }
 
 .info_items .item .img-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 80px;
   height: 80px;
   border-radius: 100%;
