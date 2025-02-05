@@ -12,7 +12,7 @@ const comentarioController = {
             });
             res.status(201).json({ message: "Comentario creado", data: nuevoComentario });
         } catch (error) {
-            
+            res.status(400).json({ error: error.message });
         }
     },
     

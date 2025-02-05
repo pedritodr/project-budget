@@ -6,7 +6,7 @@ const contactoController = {
             const { nombre, numeroTelefono,email, mensaje } = req.body;
             const nuevoContacto = Contacto.create({ nombre, numeroTelefono, email, mensaje });
 
-            res.status(201).json({ message: 'Contacto creado', contact: nuevoContacto });
+            res.status(201).json({ message: 'Contacto creado', data: nuevoContacto });
         } catch (error) {
             res.status(400).json({ error:error.message });
         }

@@ -23,8 +23,20 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Servir la página principal
-app.get('/', (req, res) => {
-    res.render('home', { title: 'Inance - Home' });
+
+app.get('/', async (req, res) => {
+
+    try {
+        const response = await fetch('http://localhost:3000/api/comentario');
+        const data = await response.json();
+        const comentario = data.data;
+        res.render('home', { 
+            title: 'Inance - Home',
+            comentarios: comentario
+        });
+    } catch (error) {
+        res.status(500).send('Error al obtener los usuarios');
+    }
 });
 
 // Ruta para la página About
@@ -41,6 +53,7 @@ app.get('/services', (req, res) => {
 app.get('/contact', (req, res) => {
     res.render('contact', { title: 'Inance - Contact' });
 });
+
 
 // Rutas API
 app.use('/api', userRoutes);
