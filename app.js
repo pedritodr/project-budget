@@ -4,6 +4,9 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const userRoutes = require('./routes/userRoutes');
 const infoRoutes = require('./routes/infoRoutes');
+const seccionesRoutes = require('./routes/seccionesRoutes')
+const contactoRoutes = require('./routes/contactoRoutes')
+const comentarioRoutes = require('./routes/comentarioRoutes')
 const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
@@ -42,6 +45,10 @@ app.get('/contact', (req, res) => {
 // Rutas API
 app.use('/api', userRoutes);
 app.use('/api', infoRoutes);
+app.use('/api', seccionesRoutes);
+app.use('/api', contactoRoutes);
+app.use('/api', comentarioRoutes)
+
 
 // Middleware para manejar errores
 app.use(errorHandler);

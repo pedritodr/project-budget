@@ -82,9 +82,6 @@ const comentarioController = {
             res.status(400).json({ error: error.message });
         }
     },
-
-    //otros métodos: create,getAll,getById,delete,update...
-    
 }
 
 module.exports = comentarioController;
