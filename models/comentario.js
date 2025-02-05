@@ -32,8 +32,11 @@ const Comentario = sequelize.define('Comentario', {
     timestamps: false,
 });
 
-Usuario.hasMany(Comentario, { foreignKey: 'id' });
-Comentario.belongsTo(User, { foreignKey: 'id' });
-
+User.hasMany(Comentario, { foreignKey: 'id',
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'});
+Comentario.belongsTo(User, { foreignKey: 'id',
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'});
 
 module.exports = Comentario;
