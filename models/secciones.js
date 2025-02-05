@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const TextoDinamico = sequelize.define('TextoDinamico', {
+const Seccion = sequelize.define('Secciones', {
     id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -16,9 +16,9 @@ const TextoDinamico = sequelize.define('TextoDinamico', {
     allowNull: false,
     },
 }, {
-    tableName: 'textosDinamicos',
+    tableName: 'Secciones',
     timestamps: false,
 });
 
 
-module.exports = TextoDinamico;
+module.exports = Seccion;

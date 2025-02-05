@@ -29,7 +29,7 @@ const userController = {
             const { id } = req.params;
             const usuario = await User.findByPk(id);
             if (usuario) {
-                res.status(200).json({message:"Usuario Encontrado",data:user});
+                res.status(200).json({message:"Usuario Encontrado",data:usuario});
             } else {
                 res.status(404).json({ message: 'Usuario no encontrado' });
             }
