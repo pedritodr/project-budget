@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const Handlebars = require('handlebars');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const userRoutes = require('./routes/userRoutes');
@@ -12,11 +13,20 @@ const errorHandler = require('./middlewares/errorHandler');
 const app = express();
 app.use(bodyParser.json());
 
+Handlebars.registerHelper('generateStars', function(calificacion) {
+    let stars = '';
+    for (let i = 0; i < calificacion; i++) {
+        stars += '<i class="fa fa-star" aria-hidden="true"></i>';
+    }
+    return new Handlebars.SafeString(stars);
+});
+
 // Configuración de Handlebars
 app.engine('handlebars', exphbs.engine({
     defaultLayout: 'main',
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
 }));
+
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -29,10 +39,10 @@ app.get('/', async (req, res) => {
     try {
         const response = await fetch('http://localhost:3000/api/comentario');
         const data = await response.json();
-        const comentario = data.data;
+        const comentarios = data.data;
         res.render('home', { 
             title: 'Inance - Home',
-            comentarios: comentario
+            comentarios: comentarios
         });
     } catch (error) {
         res.status(500).send('Error al obtener los usuarios');
