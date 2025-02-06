@@ -45,6 +45,7 @@ app.get('/', async (req, res) => {
     try {
         const response = await fetch('http://localhost:3000/api/comentario');
         const data = await response.json();
+        console.log(data);
         const comentario = data.data;
         res.render('home', { 
             title: 'Inance - Home',

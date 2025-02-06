@@ -1,5 +1,7 @@
 const Comentario = require('../models/comentario');
 const User = require('../models/user');
+const { QueryTypes } = require('sequelize');
+const sequelize = require('../config/database');
 
 const comentarioController = {  
     async create(req, res){
@@ -15,21 +17,27 @@ const comentarioController = {
             res.status(400).json({ error: error.message });
         }
     },
-    
-    async getAll(req, res) {
+    async getAll(req,res){
         try {
-            const comentarios = await Comentario.findAll({
-                include: {
-                    model: User,
-                    attributes: ['name'],
-                },
-            });
-            res.status(201).json({message:"Lista de comentarios",data:comentarios});
+            const comentarios = await sequelize.query(
+                `SELECT 
+                comentarios.id AS comentario_id,
+                comentarios.descripcion,
+                comentarios.calificacion,
+                users.name AS usuario
+                FROM 
+                comentarios
+                JOIN 
+                users ON comentarios."usuarioId" = users.id;`,
+                {
+                    type: QueryTypes.SELECT
+                }
+            );
+            res.status(200).json({message:"Lista de comentarios",data:comentarios})
         } catch (error) {
             res.status(400).json({ error: error.message });
         }
     },
-
     async getById(req,res){
         try {
             const { id } = req.params;
