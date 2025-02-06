@@ -6,12 +6,9 @@ body {
 
 .layout_padding {
   padding-top: 120px;
-  padding-bottom: 120px;
 }
 
-.layout_padding2 {
-  padding: 45px 0;
-}
+
 
 .layout_padding2-top {
   padding-top: 45px;
@@ -141,7 +138,7 @@ a:focus {
   text-align: center;
 }
 
-.custom_nav-container .navbar-nav .nav-item:hover .nav-link, .custom_nav-container .navbar-nav .nav-item.active .nav-link {
+.custom_nav-container .navbar-nav .nav-item:hover .nav-link{
   color: #0355cc;
 }
 
@@ -495,8 +492,8 @@ a:focus {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      /* -ms-flex-direction: column;
+          flex-direction: column; */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -553,6 +550,7 @@ a:focus {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 45px;
+  margin-bottom:45px;
 }
 
 .service_section .btn-box a {
@@ -661,7 +659,7 @@ a:focus {
   padding-left: 25px;
   background-color: #ffffff;
   outline: none;
-  color: #ffffff;
+  color: #000000;
   -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
 }
@@ -776,6 +774,9 @@ a:focus {
 }
 
 .info_items .item .img-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 80px;
   height: 80px;
   border-radius: 100%;
