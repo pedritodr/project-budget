@@ -74,7 +74,7 @@ boton.addEventListener("click",async function(e){
     if (response.ok) {
       const result = await response.json();
       alert('Contacto enviado correctamente');
-      form.reset(); // Limpia el formulario
+      form.reset();
     } else {
         const error = await response.json();
         alert('Error al enviar el contacto: ' + error.message);
@@ -83,7 +83,4 @@ boton.addEventListener("click",async function(e){
       alert('Error al enviar el contacto: ' + error.message);
   }
 });
-
-console.log(form, boton)
-
 </script>
