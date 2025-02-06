@@ -11,6 +11,7 @@ const comentarioRoutes = require('./routes/comentarioRoutes')
 const errorHandler = require('./middlewares/errorHandler');
 const seccionesData = require('./middlewares/seccionesData');
 
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware para manejar las secciones
 app.use(seccionesData);
+
 
 // Servir la página principal
 
