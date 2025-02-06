@@ -40,10 +40,19 @@ app.use(seccionesData);
 
 // Servir la página principal
 
-app.get('/', (req, res) => {
-    res.render('home', { 
-        title: 'Inance - Home'
-    });
+app.get('/', async (req, res) => {
+
+    try {
+        const response = await fetch('http://localhost:3000/api/comentario');
+        const data = await response.json();
+        const comentario = data.data;
+        res.render('home', { 
+            title: 'Inance - Home',
+            comentarios: comentario
+        });
+    } catch (error) {
+        res.status(500).send('Error al obtener los usuarios');
+    }
 });
 
 // Ruta para la página About
