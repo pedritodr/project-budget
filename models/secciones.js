@@ -8,7 +8,7 @@ const Seccion = sequelize.define('Secciones', {
     autoIncrement: true,
     },
     seccion: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
     },
     contenido: {

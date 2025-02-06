@@ -8,7 +8,7 @@ const seccionesController = {
             if(seccionExiste) {
                 res.status(400).json({message:`La sección ya existe ${seccion}` });
             }
-            const nuevaSeccion = await Seccion.create({ nuevaSeccion, contenido });
+            const nuevaSeccion = await Seccion.create({ seccion, contenido });
             res.status(201).json({message:"Sección creada",data:nuevaSeccion});
         } catch (error) {
             res.status(400).json({ error: error.message });

@@ -9,6 +9,7 @@ const seccionesRoutes = require('./routes/seccionesRoutes')
 const contactoRoutes = require('./routes/contactoRoutes')
 const comentarioRoutes = require('./routes/comentarioRoutes')
 const errorHandler = require('./middlewares/errorHandler');
+const seccionesData = require('./middlewares/seccionesData');
 
 const app = express();
 app.use(bodyParser.json());
@@ -32,21 +33,15 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Middleware para manejar las secciones
+app.use(seccionesData);
+
 // Servir la página principal
 
-app.get('/', async (req, res) => {
-
-    try {
-        const response = await fetch('http://localhost:3000/api/comentario');
-        const data = await response.json();
-        const comentarios = data.data;
-        res.render('home', { 
-            title: 'Inance - Home',
-            comentarios: comentarios
-        });
-    } catch (error) {
-        res.status(500).send('Error al obtener los usuarios');
-    }
+app.get('/', (req, res) => {
+    res.render('home', { 
+        title: 'Inance - Home'
+    });
 });
 
 // Ruta para la página About
